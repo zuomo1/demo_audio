@@ -25,6 +25,10 @@ public class ReptileUtil {
         Document doc;
         try {
             doc = Jsoup.connect(url + setNumber).get();
+            Element element = doc.getElementsByAttributeValue("class", "h-play").first();
+            Elements h1s = element.getElementsByTag("h1");
+            Element element1 = h1s.get(0);
+            System.out.println("正在播放的小说是:  "+element1.text());
             Elements ele = doc.select("audio");
             //获取http开头的位置
             int http = ele.toString().lastIndexOf("http");
